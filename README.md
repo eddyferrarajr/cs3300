@@ -1,2 +1,1 @@
-# cs3300
-# cs3300
+# CS3300 Portfolio Project
