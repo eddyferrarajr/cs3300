@@ -1,33 +1,41 @@
 require 'rails_helper'
+include ControllerMacros
+
+def login
+  user = FactoryBot.create(:user)
+  login_as(user)
+end
 
 RSpec.feature "Projects", type: :feature do
   
-  # context "Login" do
-  #   scenario "should sign up" do
-  #     visit root_path
-  #     click_link 'Sign up'
-  #     within("form") do
-  #       fill_in "Email", with: "test@test.com"
-  #       fill_in "Password", with: "123456"
-  #       fill_in "Password confirmation", with:"123456"
-  #     end
-  #     click_button 'Sign up'
-  #   end
+  context "Login" do
+    scenario "should sign up" do
+      visit root_path
+      click_link 'Sign up'
+      within("form") do
+        fill_in "Email", with: "test@test.com"
+        fill_in "Password", with: "123456"
+        fill_in "Password confirmation", with:"123456"
+      end
+      click_button 'Sign up'
+    end
 
-  #   scenario "should log in" do
-  #     visit root_path
-  #     within("form") do
-  #       fill_in "Email", with:"testing@test.com"
-  #       fill_in "Password", with: "123456"
-  #     end
-  #     click_button 'Log in'
-  #     visit root_path
-  #   end
+    scenario "should log in" do
+      visit root_path
+      within("form") do
+        fill_in "Email", with:"testing@test.com"
+        fill_in "Password", with: "123456"
+      end
+      click_button 'Log in'
+      visit root_path
+    end
 
-  # end
+  end
   
   context "Create new project" do
+    
     before(:each) do
+      login
       visit new_project_path
       within("form") do
         fill_in "Title", with: "Test title"
@@ -48,9 +56,10 @@ RSpec.feature "Projects", type: :feature do
   end
 
   context "Update project" do
-    #login_user
+    
     let(:project) { Project.create(title: "Test title", description: "Test content") }
     before(:each) do
+      login
       visit edit_project_path(project)
     end
 
@@ -74,6 +83,7 @@ RSpec.feature "Projects", type: :feature do
   context "Remove existing project" do
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
+      login
       visit projects_path
       click_link "Destroy"
       expect(page).to have_content("Project was successfully destroyed")

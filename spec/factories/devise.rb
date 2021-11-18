@@ -1,10 +1,14 @@
 FactoryBot.define do
-    factory :user do
-      id {1}
-      email {"test@test.com"}
-      password {"123456"}
-      # Add additional fields as required via your User model
-    end
+  sequence :email do |n|
+    "email#{n}@factory.com"
+  end
+  
+  factory :user do
+    id {|n|}
+    email { Faker::Internet.email}
+    password {"123456"}
+    # Add additional fields as required via your User model
+  end
   
     # Not used in this tutorial, but left to show an example of different user types
     # factory :admin do
