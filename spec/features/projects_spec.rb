@@ -8,30 +8,6 @@ end
 
 RSpec.feature "Projects", type: :feature do
   
-  context "Login" do
-    scenario "should sign up" do
-      visit root_path
-      click_link 'Sign up'
-      within("form") do
-        fill_in "Email", with: "test@test.com"
-        fill_in "Password", with: "123456"
-        fill_in "Password confirmation", with:"123456"
-      end
-      click_button 'Sign up'
-    end
-
-    scenario "should log in" do
-      visit root_path
-      within("form") do
-        fill_in "Email", with:"testing@test.com"
-        fill_in "Password", with: "123456"
-      end
-      click_button 'Log in'
-      visit root_path
-    end
-
-  end
-  
   context "Create new project" do
     
     before(:each) do

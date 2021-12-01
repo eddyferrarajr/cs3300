@@ -1,5 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Eddy&apos;s Portfolio</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-link">
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <h1>Projects</h1>
 
 <table>
@@ -17,13 +36,16 @@
         <td><%= project.title %></td>
         <td><%= project.description %></td>
         <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_project_path(project) %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Project', new_project_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Project', new_project_path %>
+<% end %>
