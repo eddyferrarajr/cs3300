@@ -1,51 +1,62 @@
 <p id="notice"><%= notice %></p>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Eddy&apos;s Portfolio</a>
+<body class="bg-dark" style="background-color: #121212!important;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a628d4!important;">
+  <a class="navbar-brand text-white" href="#">Eddy&apos;s Portfolio</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-link">
+      <li class="nav-link text-white">
         <% if user_signed_in? %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link text-white'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link text-white'  %>
         <% end %>
       </li>
     </ul>
   </div>
 </nav>
 
-<h1>Projects</h1>
+<div class="jumbotron text-red" style="background-color: #009c68!important;">
+  <h1 class="display-4">This is my portfolio.</h1>
+  <p class="lead">
+  I am a junior at the University of Colorado Colorado Springs majoring in Computer Science.
+  </p>
+  <p class="lead">
+  I currently am working as a Software Engineer at Jaxon Engineering and Maintenance, a government contractor.
+  </p>
+  <p class="lead">
+  This a place for me to showcase my projects that I have worked on.
+  </p>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h2 class="d-flex justify-content-center text-white">Projects</h1>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @projects.each do |project| %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 px-5">
+    <div class="col">
+      <div class="card shadow-sm py-3">
+        <h3 class="d-flex justify-content-center"><%= project.title %></h3>
+        <div class="col px-2">
+          <p class="d-flex justify-content-center"><%= project.description %></p>
+          <p><%= link_to 'Show', project %></p>
+      
+          <% if user_signed_in? %>
+            <p><%= link_to 'Edit', edit_project_path(project) %></p>
+            <p><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 
 <br>
 <% if user_signed_in? %>
   <%= link_to 'New Project', new_project_path %>
 <% end %>
+
+</body>
