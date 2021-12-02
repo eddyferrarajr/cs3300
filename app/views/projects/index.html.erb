@@ -1,28 +1,29 @@
 <p id="notice"><%= notice %></p>
-<body class="bg-dark" style="background-color: #121212!important;">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #a628d4!important;">
-  <a class="navbar-brand text-white" href="#">Eddy&apos;s Portfolio</a>
+<body style="background-color: #2D2424!important;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #2D2424!important;">
+  <a class="navbar-brand" href="#" style="color:#E0C097!important;">Eddy&apos;s Portfolio</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="#" style="color:#E0C097!important;">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-link text-white">
+      <li class="nav-link" style="color:#E0C097!important;">
         <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link', :style => 'color:#E0C097!important;'  %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link text-white'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link text-white'  %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link', :style => 'color:#E0C097!important;'   %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link', :style => 'color:#E0C097!important;'  %>
         <% end %>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="jumbotron text-red" style="background-color: #009c68!important;">
+<div class="jumbotron text-black" style="background-color: #E0C097!important;">
   <h1 class="display-4">This is my portfolio.</h1>
+  <hr class="my-4" style="background-color: #000000!important;">
   <p class="lead">
-  I am a junior at the University of Colorado Colorado Springs majoring in Computer Science.
+  My name is Eddy Ferrara Jr. and I am a junior at the University of Colorado Colorado Springs majoring in Computer Science.
   </p>
   <p class="lead">
   I currently am working as a Software Engineer at Jaxon Engineering and Maintenance, a government contractor.
@@ -32,16 +33,16 @@
   </p>
 </div>
 
-<h2 class="d-flex justify-content-center text-white">Projects</h1>
+<h2 class="d-flex justify-content-center" style="color:#E0C097!important;">Projects</h1>
 
 <% @projects.each do |project| %>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 px-5">
     <div class="col">
-      <div class="card shadow-sm py-3">
+      <div class="card shadow-sm py-3" style="background-color: #E0C097!important;">
         <h3 class="d-flex justify-content-center"><%= project.title %></h3>
         <div class="col px-2">
           <p class="d-flex justify-content-center"><%= project.description %></p>
-          <p><%= link_to 'Show', project %></p>
+          <p><%= link_to 'Show', project, :style => 'color:#2D2424!important;' %></p>
       
           <% if user_signed_in? %>
             <p><%= link_to 'Edit', edit_project_path(project) %></p>
