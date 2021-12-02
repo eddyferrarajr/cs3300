@@ -1,7 +1,7 @@
 <body style="background-color: #2D2424!important;">
 <div class="d-flex justify-content-center py-5" style="background-color: #2D2424!important;">
 <div class="card p-4" style="background-color: #E0C097!important;">
-<form class="">
+<div class="">
 
 <h2>Log in</h2>
 
@@ -23,14 +23,17 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="">
+    <%= f.submit "Log in", :class => 'btn btn-primary'%>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<a class="form-group"><%= render "devise/shared/links" %></a>
 
-</form>
+<hr class="my-2" style="background-color: #2D2424!important;">
+<a><%= link_to "Home", root_path, :style => "color: #2D2424!important;" %></a>
+
+</div>
 </div>
 </div>
 </body>
