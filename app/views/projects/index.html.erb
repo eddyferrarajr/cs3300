@@ -42,7 +42,7 @@
 <% @projects.each do |project| %>
     <div class="col-md-4">
       <div class="card shadow-sm py-3" style="background-color: #E0C097!important;">
-        <h2 class="d-flex justify-content-center"><%= project.title %></h2>
+        <h2 class="d-flex justify-content-center text-center"><%= project.title %></h2>
         <div class="col px-2">
           <p class="d-flex justify-content-center text-center lead" style="line-height: 1.75; font-size:14px"><%= project.description %></p>
           <hr>
@@ -68,7 +68,7 @@
 
 
 <br>
-<div class="px-5">
+<div class="px-5 pb-5">
 <% if user_signed_in? %>
   <%= link_to 'New Project', new_project_path, :class => 'btn btn-primary', :style => 'color: #FFFFFF!important;'%>
 <% end %>
