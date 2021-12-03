@@ -48,9 +48,8 @@
           <hr>
           <div class="d-flex justify-content-center">
           <p><%= link_to 'Show', project, :style => 'color:#2D2424!important;'%></p>
-          <p class="mx-1">  |  </p>
-      
           <% if user_signed_in? %>
+            <p class="mx-1">  |  </p>
             <p><%= link_to 'Edit', edit_project_path(project), :style => "color: #2D2424" %></p>
             <p class="mx-1">  |  </p>
             <p><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color: #2D2424" %></p>
